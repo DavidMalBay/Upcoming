@@ -1,0 +1,155 @@
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+
+  }
+  #top-menu{
+    width:100%;
+    height:30px;
+    background-color: rgb(226, 66, 68);
+    color: white;
+    padding-left: 3px;
+    font-size: 19px;
+
+  }
+  
+  
+  #menu {
+    color: grey;
+    width: 200px;
+    min-height: 100%;
+    float:left;
+    height: vh;
+  }
+  
+  
+  #bottom-menu p{
+    padding: 0px;
+    float: left
+  }
+  
+  hr {
+    padding: 0;
+    margin: 0 10px 0px;
+  }
+  
+  .EditorViewOptions{
+    float: left;
+  }
+
+  .left{
+    float: right;
+    text-align: right;
+    padding-right: 5px;
+    font-size: 25px !important;
+  }
+
+  .left:hover{
+      color: dodgerblue
+  }
+
+
+  .StatusBar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    background-color: white;
+    padding-right: 5px;
+  }
+  
+  
+  /*  
+  .EditorViewOptions {
+  
+  } */
+  
+  .ChangeDiv {
+    /* width:calc(100% - 200px); */
+    margin-left: 200px;
+    padding-left: 10px;
+    padding: 0px 5px;
+  }
+  
+  #menu ul{
+      list-style:none;
+      padding-left:10px;
+  }​
+  
+  .Content {
+    width:100%;
+    float: left;
+    padding: 0px;
+    height: 500px;
+  }
+  
+  
+  .accordion {
+    color: grey;
+      background-color: white;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+  }
+  
+  .TextEditorTitle {
+    margin: 3px 0px;
+    border: 0px;
+    width: 400px;
+    padding-left: 5px;
+  
+  }
+
+  #editor {
+    height: 100%;
+    width: 100%;
+    padding-top: 32px;
+}
+  
+.ContainerForEditor {
+    height: 100vh;
+    width: 100%;
+}
+  
+  
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  /* #panel .active, p:hover {
+    background-color: #eee;
+  } */
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .panel {
+      background-color: white;
+      display: none;
+      margin-bottom: 0px;
+  }
+  
+  .CodeMirror {
+    padding-top: 2px;
+  }
+  
+  .panel p{
+    padding: 5px 23px 0px;
+  
+  }
+  
+  .open{
+    transform: rotate(90deg);
+    transition: transform .1s linear;
+  }
+  
+
+  .hidden {
+    display: none
+  }
