@@ -16,11 +16,31 @@
               },
               {
                 label: 'New Notebook',
-                accelerator: 'CmdOrCtrl+N',
+                accelerator: 'CmdOrCtrl+Shift+N',
                 selector: "new:",
                 click: function () {
                     var focusedWindow = BrowserWindow.getFocusedWindow();
                     focusedWindow.webContents.send('new-notebook');
+                }
+
+            },
+            {
+                label: 'New Note',
+                accelerator: 'CmdOrCtrl+N',
+                selector: "newNote:",
+                click: function () {
+                    var focusedWindow = BrowserWindow.getFocusedWindow();
+                    focusedWindow.webContents.send('new-note');
+                }
+
+            },
+            {
+                label: 'Focus Mode',
+                accelerator: 'F2',
+                selector: "focusMode:",
+                click: function () {
+                    var focusedWindow = BrowserWindow.getFocusedWindow();
+                    focusedWindow.webContents.send('focus-mode');
                 }
 
             },

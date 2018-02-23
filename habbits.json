@@ -1,0 +1,21 @@
+Habbits : {
+    Daily: {
+
+        Name : "Drink Water",
+        DateStarted: dateOfCreation,
+        ReminderTime: "7am",
+        ReminderDate: "daily",
+        Status : "completed",
+        Snooze: "remind in 50 mins", --dateTime.Now().addMinutes(50)
+    },
+
+    Weekly: {
+
+    },
+
+    Monthly: {
+
+    },
+
+
+}:tada: :tada: 
