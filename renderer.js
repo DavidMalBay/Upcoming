@@ -1,7 +1,7 @@
 var fs = require('fs');
 var util = require('util');
-
 const ipcRenderer = require('electron').ipcRenderer;
+var NotesManager = require('./NotesManager');
 
 
 ipcRenderer.on('save', function (currentNotebook) {
@@ -11,6 +11,7 @@ ipcRenderer.on('save', function (currentNotebook) {
   console.log(monaco.editor.getModels()[0].getValue());
   console.log((currentNotebook));
   if (document.querySelector(".TextEditorTitle").value == "") {
+    
     $(".TextEditorTitle").focus();
     $('.TextEditorTitle').attr("placeholder", "Please enter a tilte");
 
@@ -43,9 +44,15 @@ $('#newNotebookModal').on('shown.bs.modal', function () {
   console.log("on");
   $("#modalInput").focus();
 
+  $("#modalInput").val("");
+
   
 });
 
+$('#newNotebookModal').on('hide.bs.modal', function () {
+  console.log("on");
+  $("#modalInput").val("");  
+});
 
 $('#modalInput').keypress(function (event) {
   if (event.keyCode == 13 && $('#modalInput').val() != "") {
@@ -77,7 +84,7 @@ $(".new-notebook").click(function () {
   if (!fs.existsSync("./Files/Notebooks/" + String(notebookName) + "/")) {
     fs.mkdirSync("./Files/Notebooks/" + String(notebookName) + "/");
   };
-  renderFolders();
+  NotesManager.renderFolders();
 });
 
 
@@ -185,8 +192,7 @@ const testFolder = './Files/Notebooks/';
 
 
 
-var notebooks = document.querySelector('.Notebooks');
-
+NotesManager.renderFolders();
 
 
 
@@ -199,70 +205,6 @@ var currentNotebook = $(".CurrentNotebookName").text()
 
 var currentNotebookDirectory = "./Files/Notebooks/" + currentNotebook + "/";
 
-function renderNotes() {
-  fs.readdir(currentNotebookDirectory, (err, files) => {
-    if (err) return console.log(err);
-
-    console.log(files)
-    files.forEach(file => {
-      var stats = fs.statSync(currentNotebookDirectory + file);
-      var date = stats.mtime.toLocaleDateString();
-
-
-      $(".table").append("<tr class='note' ><td>" + file + "<td class='text-right'>" + date + "</td>" + "</td></tr>");
-    })
-
-    $(".note").on("click", function (e) {
-      $(this).addClass('activeNotebook').siblings().removeClass('activeNotebook');
-    });
-
-  })
-}
-
-renderNotes();
-
-
-function renderFolders() {
-  fs.readdir(testFolder, (err, files) => {
-
-    // you shouldn't ignore errors
-    if (err) return console.log(err);
-
-    // re-use the same element's structure
-    let p = document.createElement("p");
-    p.classList.add("notebook")
-
-    notebooks.innerHTML = result = files.reduce((r, c) => {
-      p.innerHTML = c
-      return r + p.outerHTML
-    }, "")
-
-    $(".notebook").on("click", function (e) {
-      $(this).addClass('activeNotebook').siblings().removeClass('activeNotebook');
-      $(".CurrentNotebookName").text($(this).text());
-    });
-
-
-  });
-}
-
-renderFolders();
-
-
-
-// need to get current folder instead
-// var notes = document.querySelector('.notes');
-// fs.readdir(currentNotebook, (err, files) => {
-//   for (var i = 0, len = files.length; i < len; i++) {
-//     if (!document.getElementById('note') + i) {
-//       var ele = document.createElement("p");
-//       ele.setAttribute("id", "note" + i);
-//       ele.innerHTML = files[i];
-//       notes.appendChild(ele);
-
-//     }
-//   }
-// });
 
 
 
@@ -271,18 +213,3 @@ function loadNote() {
 
 }
 
-
-
-var deleteFolderRecursive = function(path) {
-  if (fs.existsSync(path)) {
-    fs.readdirSync(path).forEach(function(file, index){
-      var curPath = path + "/" + file;
-      if (fs.lstatSync(curPath).isDirectory()) { // recurse
-        deleteFolderRecursive(curPath);
-      } else { // delete file
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
-};
