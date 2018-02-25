@@ -45,8 +45,8 @@ module.exports = {
         $(".notebook").on("click", function (e) {
           $(this).addClass('activeNotebook').siblings().removeClass('activeNotebook');
           $(".accordion").addClass('active').siblings().removeClass('active');
-
           $(".CurrentNotebookName").text($(this).text());
+          module.exports.renderNotes()
         });
 
        
@@ -95,6 +95,62 @@ module.exports = {
         
 
       },
+      renderNotes: function(){
+          renderNotesPath = module.exports.pathToNotesFolder() + $(".CurrentNotebookName").text() +"\\"
+          fs.readdir(renderNotesPath, (err, files) => {
+            if (err) return console.log(err);
+        
+            console.log(files)
+            if (files.length >=1) {
+                $(".table tbody tr").remove(); 
+                files.forEach(file => {
+                    var stats = fs.statSync(renderNotesPath + file);
+                    var date = stats.mtime.toLocaleDateString()          
+                    $(".table").append("<tr class='note' ><td>" + file + "<td class='texright'>" + date + "</td>" + "</td></tr>");
+                  })
+              
+                  $(".note").on("click", function (e) {
+                    $(this).addClass('activeNotebook').siblings().removeClass('activeNotebook');
+                  });
+            }
+            else {
+                $(".table tbody tr").remove(); 
+            }
+            
+        
+          })
+        
+      },
+      
+
+      saveNote: function(){
+        var currentNotebook = $(".CurrentNotebookName").text()
+        if (document.querySelector(".TextEditorTitle").value == "") {  
+          $(".TextEditorTitle").focus();
+          $('.TextEditorTitle').attr("placeholder", "Please enter a tilte");
+        } else {
+          fs.writeFile(__dirname + "/Files/Notebooks/" + (currentNotebook) + "/" + String(document.querySelector(".TextEditorTitle").value), monaco.editor.getModels()[0].getValue(), function (err) {
+            console.log("The file was saved!");
+            module.exports.renderNotes();
+            if (err) {
+              return console.log(err);
+            };
+            
+
+          });
+
+        }
+      },
+
+      newNotebook: function() {
+        var notebookName = $("#modalInput").val();
+        console.log(notebookName);
+        if (!fs.existsSync("./Files/Notebooks/" + String(notebookName) + "/")) {
+          fs.mkdirSync("./Files/Notebooks/" + String(notebookName) + "/");
+        };
+        module.exports.renderFolders();
+      },
+
       loadNote: function(fileName){
 
       }

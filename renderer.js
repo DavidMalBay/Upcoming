@@ -5,39 +5,9 @@ var NotesManager = require('./NotesManager');
 
 
 ipcRenderer.on('save', function (currentNotebook) {
-  var currentNotebook = $(".CurrentNotebookName").text()
-  console.log('save file!!!');
-  console.log(document.querySelector(".TextEditorTitle").value);
-  console.log(monaco.editor.getModels()[0].getValue());
-  console.log((currentNotebook));
-  if (document.querySelector(".TextEditorTitle").value == "") {
-    
-    $(".TextEditorTitle").focus();
-    $('.TextEditorTitle').attr("placeholder", "Please enter a tilte");
-
-  } else {
-    fs.writeFile(__dirname + "/Files/Notebooks/" + (currentNotebook) + "/" + String(document.querySelector(".TextEditorTitle").value), function (err) {
-      if (err) {
-        return console.log(err);
-      };
-
-      console.log("The file was saved!");
-      //only append if note does not already exsist
-      $(".table").append("<tr class='note' ><td>" + String(document.querySelector(".TextEditorTitle").value) + "<td class='text-right'>" + "Today" + "</td>" + "</td></tr>");
-
-      $(".save").css({
-        "color": "green"
-      });
-
-      $(".save").css({
-        "color": "black"
-      });
-
-    });
-  }
+  NotesManager.saveNote();
 
 });
-
 
 
 $('#newNotebookModal').on('shown.bs.modal', function () {
@@ -73,18 +43,11 @@ ipcRenderer.on('new-note', function () {
   //save current note!!
   document.querySelector(".TextEditorTitle").value = "";
   monaco.editor.getModels()[0].setValue("");
-
-
 });
 
 
 $(".new-notebook").click(function () {
-  var notebookName = $("#modalInput").val();
-  console.log(notebookName);
-  if (!fs.existsSync("./Files/Notebooks/" + String(notebookName) + "/")) {
-    fs.mkdirSync("./Files/Notebooks/" + String(notebookName) + "/");
-  };
-  NotesManager.renderFolders();
+  NotesManager.newNotebook();
 });
 
 
