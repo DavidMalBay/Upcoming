@@ -106,12 +106,13 @@ module.exports = {
                 files.forEach(file => {
                     var stats = fs.statSync(renderNotesPath + file);
                     var date = stats.mtime.toLocaleDateString()          
-                    $(".table").append("<tr class='note' ><td>" + file + "<td class='texright'>" + date + "</td>" + "</td></tr>");
+                    $(".table").append("<tr class='note' ><td class= 'fileName'>" + file +"</td>" + "<td class='text-right'>" + date + "</td>" + "</td></tr>");
                   })
               
                   $(".note").on("click", function (e) {
                     $(this).addClass('activeNotebook').siblings().removeClass('activeNotebook');
-                  });
+                    module.exports.loadNote($(this).find(".fileName").text())
+                });
             }
             else {
                 $(".table tbody tr").remove(); 
@@ -152,7 +153,13 @@ module.exports = {
       },
 
       loadNote: function(fileName){
+        fs.readFile(module.exports.pathToNotesFolder() + $(".CurrentNotebookName").text() + "\\" + fileName, "utf8", "r+", (err, fd) => {
+            console.log(fd)
+            $(".TextEditorTitle").val(fileName);
+            monaco.editor.getModels()[0].setValue(fd);
 
+
+        })
       }
   }
   
