@@ -17,6 +17,8 @@ html, body {
     font-size: 19px;
 
   }
+  button:focus {outline:0;}
+
   
   
   #main-menu {
@@ -143,7 +145,21 @@ html, body {
       border: none;
       outline: none;
       transition: 0.4s;
+      
   }
+
+  .non-open-accordion {
+    color: grey;
+      background-color: white;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+  }
+
 
   
   .TextEditorTitle {
@@ -244,4 +260,8 @@ th{
 .activeNotebook {
   background-color: #eee;
   /* color: black */
+}
+
+.active {
+ color: black;
 }

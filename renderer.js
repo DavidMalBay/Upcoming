@@ -133,19 +133,27 @@ ipcRenderer.on('new-goal', function () {
   console.log('New Goal');
 });
 
-
-
-
 var acc = document.getElementsByClassName("accordion");
 for (var i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function () {
-    this.classList.toggle("active");
     var panel = this.nextElementSibling;
     if (panel.style.display === "block") {
       panel.style.display = "none";
+      $(this).removeClass('active');
+
     } else {
       panel.style.display = "block";
+      $(this).addClass('active').siblings().removeClass('active');
+
     }
+  });
+};
+
+var acc = document.getElementsByClassName("non-open-accordion");
+for (var i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+          $(this).addClass('active').siblings().removeClass('active');
+    
   });
 };
 
@@ -159,24 +167,13 @@ nodes.forEach(n => {
   })
 });
 
-// var nodes = document.querySelectorAll('.accordion');
-// nodes.forEach(n => {
-//   n.addEventListener("click", function (e) {
-//     var icon = n.querySelector('.icon');
-//     icon.classList.toggle("open");
-//   })
-// });
-
-
-// $(document).ready(function(){
-//   $('.new-notebook').click(function(){
-//       console.log("deleted-tiem");
-//       document.querySelector(".TextEditorTitle").value = "";
-//       monaco.editor.getModels()[0].setValue("");
-
-
-//   });
-// });
+var nodes = document.querySelectorAll('.accordion');
+nodes.forEach(n => {
+  n.addEventListener("click", function (e) {
+    var icon = n.querySelector('.icon');
+    icon.classList.toggle("open");
+  })
+});
 
 $(document).ready(function () {
   $('.delete-item').click(function () {
@@ -194,22 +191,7 @@ const testFolder = './Files/Notebooks/';
 
 NotesManager.renderFolders();
 
-
-
-
-//  embedd this in a function that refreshes and checks for changes in this folder
-//here underneath
-
-// noteName = document.querySelector(".noteName");
 var currentNotebook = $(".CurrentNotebookName").text()
 
 var currentNotebookDirectory = "./Files/Notebooks/" + currentNotebook + "/";
-
-
-
-
-
-function loadNote() {
-
-}
 

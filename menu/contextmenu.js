@@ -5,15 +5,30 @@ var NotesManager = require('../NotesManager');
 
 
 let rightClickPosition = null
-
+let element = null;
 const menu = new Menu()
-menu.append(new MenuItem({
-  label: 'delete',
-  click() {
-    console.log(NotesManager.pathToNotesFolder() + clickedElement)
-    NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+menu.append(new MenuItem(
+  {
+    label: 'Delete',
+    click() {
+      console.log(NotesManager.pathToNotesFolder() + clickedElement)
+      NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+    }
   }
-}))
+))
+
+menu.append(new MenuItem(
+  {
+    label: 'Rename',
+    click() {
+      console.log("Rename")
+      // $(element).trigger("focus");
+      NotesManager.rename(element);
+
+      // NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+    }
+  }
+))
 
 const menuItem = new MenuItem({
   label: 'Inspect Element',
@@ -26,6 +41,7 @@ menu.append(menuItem)
 
 window.addEventListener('contextmenu', (e) => {
   e.preventDefault();
+  element = $(e.target)
   clickedElement = $(e.target).text();
   rightClickPosition = {
     x: e.x,
