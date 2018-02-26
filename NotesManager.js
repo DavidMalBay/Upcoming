@@ -1,4 +1,5 @@
 var fs = require('fs');
+var emoji = require("node-emoji")
 
 module.exports = {
 
@@ -130,7 +131,12 @@ module.exports = {
           $(".TextEditorTitle").focus();
           $('.TextEditorTitle').attr("placeholder", "Please enter a tilte");
         } else {
-          fs.writeFile(__dirname + "/Files/Notebooks/" + (currentNotebook) + "/" + String(document.querySelector(".TextEditorTitle").value), monaco.editor.getModels()[0].getValue(), function (err) {
+            newTitle = emoji.emojify($(".TextEditorTitle").val())
+            newSaveData = emoji.emojify(monaco.editor.getModels()[0].getValue())
+          fs.writeFile(__dirname + "/Files/Notebooks/" + (currentNotebook) + "/" + newTitle,newSaveData , function (err) {
+            newTitle = emoji.emojify($(".TextEditorTitle").val())
+            $(".TextEditorTitle").val(newTitle);
+            monaco.editor.getModels()[0].setValue(newSaveData)
             console.log("The file was saved!");
             module.exports.renderNotes();
             if (err) {
