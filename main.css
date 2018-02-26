@@ -6,6 +6,13 @@ html, body {
     overflow-y: hidden;
     margin: 0;
     padding: 0;
+    background-color: rgb(243, 243, 243)
+
+
+  }
+
+  body {
+    background-color: rgb(243, 243, 243)
 
   }
   #top-menu{
@@ -18,18 +25,21 @@ html, body {
 
   }
   button:focus {outline:0;}
+  .TextEditorTitle:focus {
+    outline-color: black;
+  }
 
+button {
+  background-color: rgb(243, 243, 243)
+
+}
   
   
   #main-menu {
-    color: grey;
     width: 200px;
-    min-height: 100%;
     float:left;
-    height: vh;
   }
   #sub-menu {
-    color: grey;
     width: 300x;
     min-height: 100%;
     float:left;
@@ -132,12 +142,11 @@ html, body {
     padding: 0px;
     height: 500px;
     margin: 0px;
+
   }
   
   
   .accordion {
-    color: grey;
-      background-color: white;
       cursor: pointer;
       padding: 10px;
       width: 100%;
@@ -149,8 +158,6 @@ html, body {
   }
 
   .non-open-accordion {
-    color: grey;
-      background-color: white;
       cursor: pointer;
       padding: 10px;
       width: 100%;
@@ -167,6 +174,8 @@ html, body {
     border: 0px;
     width: 400px;
     padding-left: 5px;
+    background-color: rgb(243, 243, 243);
+    
   
   }
 
@@ -201,7 +210,6 @@ textarea.form-control {
   
   /* Style the accordion panel. Note: hidden by default */
   .panel {
-      background-color: white;
       display: none;
       margin-bottom: 0px;
   }

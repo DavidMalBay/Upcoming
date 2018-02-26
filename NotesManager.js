@@ -154,7 +154,6 @@ module.exports = {
 
       loadNote: function(fileName){
         fs.readFile(module.exports.pathToNotesFolder() + $(".CurrentNotebookName").text() + "\\" + fileName, "utf8", "r+", (err, fd) => {
-            console.log(fd)
             $(".TextEditorTitle").val(fileName);
             monaco.editor.getModels()[0].setValue(fd);
 
