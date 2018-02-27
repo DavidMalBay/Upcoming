@@ -12,7 +12,12 @@ menu.append(new MenuItem(
     label: 'Delete',
     click() {
       console.log(NotesManager.pathToNotesFolder() + clickedElement)
-      NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+      if ($(element).hasClass("fileName")){
+        NotesManager.deleteNote($(element).text())
+      }
+      else if($(element).hasClass("notebook")){
+        NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+      }
     }
   }
 ))
@@ -49,3 +54,6 @@ window.addEventListener('contextmenu', (e) => {
   }
   menu.popup(remote.getCurrentWindow())
 }, false)
+
+
+

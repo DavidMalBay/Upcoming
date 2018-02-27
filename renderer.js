@@ -39,10 +39,11 @@ ipcRenderer.on('new-project', function () {
 });
 
 ipcRenderer.on('new-note', function () {
-  console.log('New Note');
   //save current note!!
+  NotesManager.saveNote();
   document.querySelector(".TextEditorTitle").value = "";
   monaco.editor.getModels()[0].setValue("");
+  $(".TextEditorTitle").focus()
 });
 
 

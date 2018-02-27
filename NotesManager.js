@@ -151,20 +151,26 @@ module.exports = {
 
       newNotebook: function() {
         var notebookName = $("#modalInput").val();
-        console.log(notebookName);
-        if (!fs.existsSync("./Files/Notebooks/" + String(notebookName) + "/")) {
-          fs.mkdirSync("./Files/Notebooks/" + String(notebookName) + "/");
+        if (!fs.existsSync(module.exports.pathToNotesFolder() + String(notebookName) + "/")) {
+          fs.mkdirSync(module.exports.pathToNotesFolder() + String(notebookName) + "/");
         };
         module.exports.renderFolders();
+
       },
 
       loadNote: function(fileName){
         fs.readFile(module.exports.pathToNotesFolder() + $(".CurrentNotebookName").text() + "\\" + fileName, "utf8", "r+", (err, fd) => {
             $(".TextEditorTitle").val(fileName);
             monaco.editor.getModels()[0].setValue(fd);
-
-
         })
+      },
+
+      deleteNote: function(fileName) {
+        fs.unlink(module.exports.pathToNotesFolder() + $(".CurrentNotebookName").text() + "\\" + fileName, (err) => {
+          if (err) throw err;
+          console.log('file was deleted');
+        });
+        module.exports.renderNotes();
       }
   }
   
