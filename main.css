@@ -266,6 +266,11 @@ th{
   /* color: black */
 }
 
+.activeNote {
+  background-color: #eee;
+  /* color: black */
+}
+
 .active {
  color: black;
 }

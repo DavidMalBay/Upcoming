@@ -7,11 +7,32 @@ var NotesManager = require('../NotesManager');
 let rightClickPosition = null
 let element = null;
 const menu = new Menu()
-menu.append(new MenuItem(
+const fileActionsMenu = new Menu()
+
+
+fileActionsMenu.append(new MenuItem(
+  {
+    label: 'Rename',
+    click() {
+      if($(element).hasClass("fileName")){
+         console.log()
+        NotesManager.rename(element);
+      }
+      else if($(element).hasClass("notebook"))
+      {
+        NotesManager.rename(element);
+      }
+
+
+      // NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
+    }
+  }
+))
+
+var deleteItem = new MenuItem(
   {
     label: 'Delete',
     click() {
-      console.log(NotesManager.pathToNotesFolder() + clickedElement)
       if ($(element).hasClass("fileName")){
         NotesManager.deleteNote($(element).text())
       }
@@ -20,20 +41,7 @@ menu.append(new MenuItem(
       }
     }
   }
-))
-
-menu.append(new MenuItem(
-  {
-    label: 'Rename',
-    click() {
-      console.log("Rename")
-      // $(element).trigger("focus");
-      NotesManager.rename(element);
-
-      // NotesManager.deleteFolderRecursive(NotesManager.pathToNotesFolder() + clickedElement)
-    }
-  }
-))
+)
 
 const menuItem = new MenuItem({
   label: 'Inspect Element',
@@ -43,16 +51,27 @@ const menuItem = new MenuItem({
 
 })
 menu.append(menuItem)
+fileActionsMenu.append(deleteItem)
 
 window.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   element = $(e.target)
   clickedElement = $(e.target).text();
-  rightClickPosition = {
-    x: e.x,
-    y: e.y
+
+  if($(element).hasClass("fileName") || $(element).hasClass("notebook") ){
+    
+    fileActionsMenu.popup(remote.getCurrentWindow())
+    
   }
-  menu.popup(remote.getCurrentWindow())
+  else{
+    rightClickPosition = {
+      x: e.x,
+      y: e.y
+    }
+    menu.popup(remote.getCurrentWindow())
+  }
+
+  
 }, false)
 
 
