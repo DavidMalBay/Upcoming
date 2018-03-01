@@ -61,7 +61,10 @@ module.exports = {
   },
   rename: function (element) {
     // console.log($(element).text())
-    $(element).click();
+
+    if(!($(element).hasClass('activeNotebook')) || !($(element).hasClass("activeNote"))){
+      $(element).click();
+    }
 
     var activeNotebookName = $(".activeNotebook").text()
     var clickedElementText = $(element).text();
@@ -82,7 +85,9 @@ module.exports = {
     if(activeNotebookName == clickedElementText){
       console.log("notebookPath")
       element.on("blur", function(){
-        fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName , module.exports.pathToNotesFolder() + $(element).text())
+        var newNameToSave = emoji.emojify($(element).text())
+        fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName , module.exports.pathToNotesFolder() + newNameToSave)
+        module.exports.renderFolders()
         window.getSelection().removeAllRanges();
         element.attr("contenteditable", "false")
       })
@@ -91,15 +96,14 @@ module.exports = {
     else {
       console.log("notePath")
       element.on("blur", function(){
-        fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName + "\\" + clickedElementText , module.exports.pathToNotesFolder() + activeNotebookName +"\\"+ $(element).text())
+        var newNameToSave = emoji.emojify($(element).text())
+        fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName + "\\" + clickedElementText , module.exports.pathToNotesFolder() + activeNotebookName +"\\"+  newNameToSave)
+        module.exports.renderNotes()
         window.getSelection().removeAllRanges();
         element.attr("contenteditable", "false")
       } )
     }
-    
-  
-
-
+ 
 
   },
   renderNotes: function () {
