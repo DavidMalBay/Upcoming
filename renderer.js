@@ -1,7 +1,11 @@
+// import { clipboard } from 'electron';
+
+var clipboard = require('electron').clipboard
 var fs = require('fs');
 var util = require('util');
 const ipcRenderer = require('electron').ipcRenderer;
 var NotesManager = require('./NotesManager');
+var emoji = require("node-emoji")
 
 
 ipcRenderer.on('save', function (currentNotebook) {
@@ -55,6 +59,15 @@ $(".new-notebook").click(function () {
 ipcRenderer.on('new-notebook', function () {
   console.log('New Notebook');
   $('#newNotebookModal').modal('toggle');
+  // $("#modalInput").focus();
+
+});
+
+ipcRenderer.on('copy-note', function () {
+  console.log('Copy Note');
+  textToCopy = emoji.emojify(monaco.editor.getModels()[0].getValue())
+  clipboard.writeText(textToCopy)
+  // $('#newNotebookModal').modal('toggle');
   // $("#modalInput").focus();
 
 });

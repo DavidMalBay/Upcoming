@@ -88,6 +88,8 @@ module.exports = {
         var newNameToSave = emoji.emojify($(element).text())
         fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName , module.exports.pathToNotesFolder() + newNameToSave)
         module.exports.renderFolders()
+        //update current notebook text
+        $(".CurrentNotebookName").text(newNameToSave)
         window.getSelection().removeAllRanges();
         element.attr("contenteditable", "false")
       })
@@ -99,6 +101,8 @@ module.exports = {
         var newNameToSave = emoji.emojify($(element).text())
         fs.renameSync(module.exports.pathToNotesFolder() + activeNotebookName + "\\" + clickedElementText , module.exports.pathToNotesFolder() + activeNotebookName +"\\"+  newNameToSave)
         module.exports.renderNotes()
+        //update note title
+        $(".TextEditorTitle").val(newNameToSave)
         window.getSelection().removeAllRanges();
         element.attr("contenteditable", "false")
       } )

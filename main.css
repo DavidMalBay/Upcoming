@@ -74,7 +74,8 @@ button {
   }
 
   .submenu-item:hover {
-    color: red;
+    background-color: rgba(68, 181, 247, 0.726);
+    color:white
   }
     
 
@@ -101,8 +102,8 @@ button {
     font-size: 14px;
   }
   .sub-menu-item:hover{
-    background-color: #eee;
-  }
+    background-color: rgb(68, 181, 247);
+    color:white  }
 
 
   .StatusBar {
@@ -153,6 +154,11 @@ button {
       
   }
 
+  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: rgb(68, 181, 247);
+  color:white
+  } 
+
   .non-open-accordion {
       cursor: pointer;
       padding: 10px;
@@ -200,8 +206,8 @@ textarea.form-control {
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
   #main-menu  p:hover {
-    background-color: #eee;
-    /* border-left: green 3px solid; */
+    background-color: rgb(68, 181, 247);
+    color:white    /* border-left: green 3px solid; */
   }
   
   /* Style the accordion panel. Note: hidden by default */
@@ -262,12 +268,15 @@ th{
 
 
 .activeNotebook {
-  background-color: #eee;
+  background-color: rgb(68, 181, 247);
+  color:white
   /* color: black */
 }
 
 .activeNote {
-  background-color: #eee;
+  background-color: rgb(68, 181, 247);
+  color:white
+
   /* color: black */
 }
 

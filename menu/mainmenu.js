@@ -45,6 +45,14 @@
 
             },
             {
+                label: 'Copy Note Text',
+                accelerator: "CmdOrCtrl+Shift+C",
+                click: function(){
+                    var focusedWindow = BrowserWindow.getFocusedWindow();
+                    focusedWindow.webContents.send("copy-note")
+                }
+            },
+            {
                 label: 'New Notebook',
                 accelerator: 'CmdOrCtrl+Shift+T',
                 selector: "new:",

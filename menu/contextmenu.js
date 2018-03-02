@@ -15,7 +15,6 @@ fileActionsMenu.append(new MenuItem(
     label: 'Rename',
     click() {
       if($(element).hasClass("fileName")){
-         console.log()
         NotesManager.rename(element);
       }
       else if($(element).hasClass("notebook"))
@@ -59,7 +58,7 @@ window.addEventListener('contextmenu', (e) => {
   clickedElement = $(e.target).text();
 
   if($(element).hasClass("fileName") || $(element).hasClass("notebook") ){
-    
+    $(element).click();
     fileActionsMenu.popup(remote.getCurrentWindow())
     
   }
