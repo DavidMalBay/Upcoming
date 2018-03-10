@@ -11,11 +11,10 @@ const url = require('url')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  let mainWindow = new BrowserWindow({
     width: 2000, 
     height: 1000,
     title: "Upcoming",
@@ -25,8 +24,10 @@ function createWindow () {
   })
   require('./menu/mainmenu')
 
- 
 
+
+ 
+  // mainWindow.setMenu(null)
 
 
   // and load the index.html of the app.

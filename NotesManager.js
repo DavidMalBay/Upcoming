@@ -168,6 +168,7 @@ module.exports = {
       fs.mkdirSync(module.exports.pathToNotesFolder() + String(notebookName) + "/");
     };
     module.exports.renderFolders();
+//click on newly created notebook and set active
 
   },
 

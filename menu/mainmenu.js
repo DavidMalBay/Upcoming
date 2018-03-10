@@ -4,16 +4,7 @@
 
   const template = [{
           label: 'File',
-          submenu: [{
-                  label: 'New Project',
-                  accelerator: 'CmdOrCtrl+P',
-                  selector: "new:",
-                  click: function () {
-                      var focusedWindow = BrowserWindow.getFocusedWindow();
-                      focusedWindow.webContents.send('new-project');
-                  }
-
-              },
+          submenu: [
               {
                 label: 'New Notebook',
                 accelerator: 'CmdOrCtrl+Shift+N',
@@ -142,7 +133,23 @@
               },
               {
                   role: 'togglefullscreen'
-              }
+              },
+              {
+                label: 'Toggle Menu',
+                accelerator: 'Shift+M',
+                selector: "Menu:",
+                click: function () {
+                    var focusedWindow = BrowserWindow.getFocusedWindow();
+                    if (focusedWindow.isMenuBarVisible(true)){
+                        focusedWindow.setMenuBarVisibility(false)
+                    }
+                    else {
+                        focusedWindow.setMenuBarVisibility(true)
+                    }
+
+                }
+
+            },
           ]
       },
       {

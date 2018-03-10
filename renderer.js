@@ -1,11 +1,10 @@
-// import { clipboard } from 'electron';
-
 var clipboard = require('electron').clipboard
 var fs = require('fs');
 var util = require('util');
 const ipcRenderer = require('electron').ipcRenderer;
 var NotesManager = require('./NotesManager');
 var emoji = require("node-emoji")
+const BrowserWindow = require('electron').BrowserWindow;
 
 
 ipcRenderer.on('save', function (currentNotebook) {
@@ -17,7 +16,6 @@ ipcRenderer.on('save', function (currentNotebook) {
 $('#newNotebookModal').on('shown.bs.modal', function () {
   console.log("on");
   $("#modalInput").focus();
-
   $("#modalInput").val("");
 
   
@@ -77,23 +75,17 @@ ipcRenderer.on('new-todo', function () {
 });
 
 ipcRenderer.on('focus-mode', function () {
-  console.log('focus');
-  var x = document.getElementById("main-menu")
-  if (x.style.display === "none") {
-    x.style.display = "block";
+  var x = $("#main-menu")
+  var g = $("#sub-menu")
+
+  if (!x.is(":visible")) {
+    x.show()
+    g.show()
   } else {
-    x.style.display = "none";
-  }
-  var g = document.getElementById("sub-menu")
-  if (g.style.display === "none") {
-    g.style.display = "block";
-  } else {
-    g.style.display = "none";
+    x.hide()
+    g.hide()
   }
 
-  // $(".ChangeDiv").css({
-  //   "margin-left": "10px"
-  // })
   if ($('.ChangeDiv').css('margin-left') == '500px') {
     $(".ChangeDiv").css({
       "margin-left": "5px"
@@ -172,3 +164,12 @@ var currentNotebook = $(".CurrentNotebookName").text()
 
 var currentNotebookDirectory = "./Files/Notebooks/" + currentNotebook + "/";
 
+
+$(".EditorUIButton").click(function(){
+  console.log("clicked")
+  // var focusedWindow = BrowserWindow.focusedWindow();
+  // focusedWindow.webContents.executeJavaScript("bold", false, null)
+  // mainWindow.webContents.executeJavascript("bold", false)
+  // BrowserWindow.loadURL('https://github.com')
+
+})

@@ -162,11 +162,12 @@
       <i class="left far fa-trash-alt" data-toggle="modal" data-target="#exampleModal"></i>
 
       <div class="ContainerForEditor">
-        <div id="editor"></div>
-        <!-- <div id="notesEditor">
+        <!-- <div id="editor"></div> -->
+        <div id="notesEditor">
+          <input type="button" value="B" class="EditorUIButton" />           
           <textarea class="form-control"></textarea>
 
-        </div> -->
+        </div>
       </div>
 
     </div>
@@ -202,6 +203,12 @@
         // You can also require other files to run in this process
         require('./menu/contextmenu')
         require('./renderer.js')
+
+        function bold(){
+          console.log("bold")
+          document.execCommand('bold', false, null)
+        }
+        
       </script>
 
       <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>

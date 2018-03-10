@@ -102,7 +102,7 @@ button {
     font-size: 14px;
   }
   .sub-menu-item:hover{
-    background-color: rgb(68, 181, 247);
+    background-color: rgb(247, 68, 68);
     color:white  }
 
 
@@ -155,7 +155,7 @@ button {
   }
 
   .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: rgb(68, 181, 247);
+    background-color: rgb(247, 68, 68);
   color:white
   } 
 
@@ -206,7 +206,7 @@ textarea.form-control {
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
   #main-menu  p:hover {
-    background-color: rgb(68, 181, 247);
+    background-color: rgb(247, 68, 68);
     color:white    /* border-left: green 3px solid; */
   }
   
@@ -268,13 +268,13 @@ th{
 
 
 .activeNotebook {
-  background-color: rgb(68, 181, 247);
+  background-color: rgb(247, 68, 68);
   color:white
   /* color: black */
 }
 
 .activeNote {
-  background-color: rgb(68, 181, 247);
+  background-color: rgb(247, 68, 68);
   color:white
 
   /* color: black */
