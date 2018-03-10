@@ -5,6 +5,8 @@ const ipcRenderer = require('electron').ipcRenderer;
 var NotesManager = require('./NotesManager');
 var emoji = require("node-emoji")
 const BrowserWindow = require('electron').BrowserWindow;
+const Quill = require('quill');
+
 
 
 ipcRenderer.on('save', function (currentNotebook) {
@@ -75,7 +77,7 @@ ipcRenderer.on('new-todo', function () {
 });
 
 ipcRenderer.on('focus-mode', function () {
-  var x = $("#main-menu")
+  var x = $("#side-menu")
   var g = $("#sub-menu")
 
   if (!x.is(":visible")) {
@@ -88,7 +90,7 @@ ipcRenderer.on('focus-mode', function () {
 
   if ($('.ChangeDiv').css('margin-left') == '500px') {
     $(".ChangeDiv").css({
-      "margin-left": "5px"
+      "margin-left" : "0px"
     })
   } else {
     $(".ChangeDiv").css({
@@ -173,3 +175,38 @@ $(".EditorUIButton").click(function(){
   // BrowserWindow.loadURL('https://github.com')
 
 })
+
+// var options = {
+//   debug: 'info',
+//   modules: {
+//     toolbar: '#toolbar'
+//   },
+//   placeholder: 'Compose an epic...',
+//   readOnly: true,
+//   theme: 'snow',
+//   background: 'black'
+// };
+
+var container = $('#notesEditor').get(0);
+// var toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
+
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [ 'link', 'image'],          // add's image support
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],         // outdent/indent
+  [{ 'color': [] }, {'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
+
+var quill = new Quill(container, {
+  modules: {
+    toolbar: toolbarOptions
+  },
+  theme: 'snow'
+});
+

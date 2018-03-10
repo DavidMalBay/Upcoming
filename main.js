@@ -15,7 +15,8 @@ const url = require('url')
 function createWindow () {
   // Create the browser window.
   let mainWindow = new BrowserWindow({
-    width: 2000, 
+    minWidth: 1225, 
+    width: 1580,
     height: 1000,
     title: "Upcoming",
     //icon: 

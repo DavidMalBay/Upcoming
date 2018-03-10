@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link href="https://cdn.quilljs.com/1.3.5/quill.snow.css" rel="stylesheet">
   <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.css">
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.css"></link>
@@ -11,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <script type="text/javascript" src="node_modules\jquery\dist\jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
   <link rel="stylesheet" type="text/css" href="node_modules\codemirror\lib\codemirror.css">
+
 </head>
 
 <body>
@@ -60,7 +62,7 @@
   </div> -->
 
   <div class="Content">
-    <div id="main-menu" class="focusMode">
+    <div id="side-menu" class="focusMode">
       <!-- <button class="accordion">
         <i class="fa fa-angle-right icon" aria-hidden="true"></i>
 
@@ -153,21 +155,16 @@
 
     </div>
 
-    <div class="ChangeDiv container-fluid">
+    <div class="ChangeDiv">
 
-      <div class="EditorViewOptions">
-        <input placeholder="Note Title" class="TextEditorTitle"></input>
-      </div>
-
-      <i class="left far fa-trash-alt" data-toggle="modal" data-target="#exampleModal"></i>
+     
+      <!-- <i class="left far fa-trash-alt" data-toggle="modal" data-target="#exampleModal"></i> -->
 
       <div class="ContainerForEditor">
+        <input placeholder="Note Title" class="TextEditorTitle"></input>
         <!-- <div id="editor"></div> -->
-        <div id="notesEditor">
-          <input type="button" value="B" class="EditorUIButton" />           
-          <textarea class="form-control"></textarea>
 
-        </div>
+        <div id="notesEditor"></div>
       </div>
 
     </div>

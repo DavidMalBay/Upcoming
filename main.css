@@ -31,7 +31,7 @@ button {
 }
   
   
-  #main-menu {
+  #side-menu {
     width: 200px;
     float:left;
   }
@@ -123,9 +123,9 @@ button {
   } */
   
   .ChangeDiv {
-    /* width:calc(100% - 200px); */
+    /* width:calc(100% - 500px); */
     margin-left: 500px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     padding: 0px 5px;
   }
   
@@ -139,6 +139,7 @@ button {
     padding: 0px;
     height: 500px;
     margin: 0px;
+    width: 100%
 
   }
   
@@ -199,7 +200,6 @@ textarea.form-control {
   
 .ContainerForEditor {
     height: 100vh;
-    width: 100%;
 }
   
   
@@ -283,3 +283,15 @@ th{
 .active {
  color: black;
 }
+
+.ql-toolbar.ql-snow {
+  height: 30px;
+  border: none;
+  padding-bottom: 0px;
+}
+
+#notesEditor{
+  padding-top: 5px
+}
+
+
