@@ -1,194 +1,198 @@
+:root {
+  --main-bg-color: rgb(252, 252, 252);
+  --navigation-menu-bg-color : rgb(252, 252, 252);
+  --text-color: black;
+  --active: rgb(233, 233, 233);
+}
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    margin: 0;
-    padding: 0;
-    background-color: rgb(243, 243, 243)
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg-color);
+}
 
+#top-menu {
+  width: 100%;
+  height: 30px;
+  color: var(--main-bg-color);
+  padding-left: 10px;
+  font-size: 19px;
+  background-color: tomato
 
-  }
+}
 
-  #top-menu{
-    width:100%;
-    height:30px;
-    background-color: rgb(216, 79, 79);
-    color: white;
-    padding-left: 10px;
-    font-size: 19px;
+button:focus {
+  outline: 0;
+}
 
-  }
-  button:focus {outline:0;}
-  .TextEditorTitle:focus {
-    outline-color: black;
-  }
+.TextEditorTitle:focus {
+  outline-color: rgb(218, 218, 218);
+  border-bottom: 1px solid rgb(228, 228, 228)
+}
 
 button {
-  background-color: rgb(243, 243, 243)
-
-}
-  
-  
-  #side-menu {
-    width: 200px;
-    float:left;
-  }
-  #sub-menu {
-    width: 300x;
-    min-height: 100%;
-    float:left;
-    margin: 0px;
-    padding: 0px;
-    height: vh;
-  }
-  
-  
-  #bottom-menu p{
-    padding: 0px;
-    float: left
-  }
-  
-  hr {
-    padding: 0;
-    margin: 0 10px 0px;
-  }
-  
-  .EditorViewOptions{
-    float: left;
-  }
-
-  .left{
-    float: right;
-    text-align: right;
-    padding-right: 5px;
-    font-size: 25px !important;
-  }
-
-  .submenu-item{
-    font-size: 20px !important;
-    float: right;
-    text-align: right;
-    padding-right: 5px;
-  }
-
-  .submenu-item:hover {
-    background-color: rgba(68, 181, 247, 0.726);
-    color:white
-  }
-    
-
-  .left:hover{
-      color: red
-  }
-
-  .sub-menu-item{
-    height: 90px;
-    padding: 5px;
-    margin: 0px;
-    width: 300px;
-  }
-
-  .sub-menu-item p,h6{
-    margin:0
-  }
-
-  .item-date-created {
-    font-size: 12px;
-  }
-
-  .item-preview {
-    font-size: 14px;
-  }
-  .sub-menu-item:hover{
-    background-color: rgb(247, 68, 68);
-    color:white  }
-
-
-  .StatusBar {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    text-align: right;
-    background-color: white;
-    padding-right: 5px;
-  }
-  
-  
-  /*  
-  .EditorViewOptions {
-  
-  } */
-  
-  .ChangeDiv {
-    /* width:calc(100% - 500px); */
-    margin-left: 500px;
-    /* padding-left: 10px; */
-    padding: 0px 5px;
-  }
-  
-  #menu ul{
-      list-style:none;
-      padding-left:10px;
-  }​
-  
-  .Content {
-    float: left;
-    padding: 0px;
-    height: 500px;
-    margin: 0px;
-    width: 100%
-
-  }
-  
-  
-  .accordion {
-      cursor: pointer;
-      padding: 10px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      transition: 0.4s;
-      
-  }
-
-  .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: rgb(247, 68, 68);
-  color:white
-  } 
-
-  .non-open-accordion {
-      cursor: pointer;
-      padding: 10px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      transition: 0.4s;
-  }
-
-
-  
-  .TextEditorTitle {
-    margin: 3px 0px;
-    border: 0px;
-    width: 400px;
-    padding-left: 5px;
-    background-color: rgb(243, 243, 243);
-    
-  
-  }
-
-  #editor {
-    height: 100%;
-    width: 100%;
-    padding-top: 32px;
+  background-color: var(--navigation-menu-bg-color );
 }
 
-#notesEditor{
+#side-menu {
+  width: 200px;
+  float: left;
+  height: 0px;
+  background-color: var(--navigation-menu-bg-color );
+}
+
+#sub-menu {
+  width: 250px;
+  min-height: 100%;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  height: vh;
+}
+
+#bottom-menu p {
+  padding: 0px;
+  float: left
+}
+
+hr {
+  padding: 0;
+  margin: 0 10px 0px;
+}
+
+.EditorViewOptions {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-right: 20px;
+  font-size: 25px !important;
+  color: white;
+}
+
+.submenu-item {
+  font-size: 20px !important;
+  float: right;
+  text-align: right;
+  padding-right: 5px;
+}
+
+.submenu-item:hover {
+  background-color: rgba(68, 181, 247, 0.726);
+  color: black
+}
+
+.right:hover {
+  color: rgb(228, 67, 67)
+}
+
+.sub-menu-item {
+  height: 90px;
+  padding: 5px;
+  margin: 0px;
+  width: 100%;
+}
+
+.sub-menu-item p,
+h6 {
+  margin: 0
+}
+
+.item-date-created {
+  font-size: 12px;
+}
+
+.item-preview {
+  font-size: 14px;
+}
+
+.sub-menu-item:hover {
+  background-color: var(--active);
+  color: black
+}
+
+.StatusBar {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: right;
+  background-color: white;
+  padding-right: 5px;
+}
+
+.ChangeDiv {
+  /* width:calc(100% - 500px); */
+  margin-left: 200px;
+  /* padding-left: 10px; */
+  padding: 0px 5px;
+  border-right: 1px solid rgb(218, 218, 218);
+  height: 100vh;
+}
+
+#menu ul {
+  list-style: none;
+  padding-left: 10px;
+}
+
+​ .Content {
+  float: left;
+  padding: 0px;
+  height: 500px;
+  margin: 0px;
+  width: 100%
+}
+
+.accordion {
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  background-color: var(--navigation-menu-bg-color);
+  color: var(--text-color)
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: var(--active);
+  color: black
+}
+
+.non-open-accordion {
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  color: var(--text-color);
+  background-color: var(--navigation-menu-bg-color);
+}
+
+.TextEditorTitle {
+  border: 0px;
+  width: 400px;
+  margin-left: 12px;
+  background-color: var(--main-bg-color);
+}
+
+#editor {
+  height: 100%;
+  width: 100%;
+  /* padding-top: 32px; */
+}
+
+#notesEditor {
   min-height: 100%;
   min-width: 100%;
   padding-top: 32px;
@@ -197,91 +201,87 @@ button {
 textarea.form-control {
   height: 100vh;
 }
-  
+
 .ContainerForEditor {
-    height: 100vh;
+  height: 100vh;
+  border-left: 1px solid rgb(212, 212, 212);
 }
-  
-  
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  #main-menu  p:hover {
-    background-color: rgb(247, 68, 68);
-    color:white    /* border-left: green 3px solid; */
-  }
-  
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
-      display: none;
-      margin-bottom: 0px;
-  }
-  
-  .CodeMirror {
-    padding-top: 2px;
-  }
-  
-  .panel p{
-    padding: 5px 23px;
-    vertical-align: middle;
-    margin: 0px;
-  
-  }
-  
-  .open{
-    transform: rotate(90deg);
-    transition: transform .1s linear;
-  }
-  
 
-  .hidden {
-    display: none
-  }
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 
+#main-menu p:hover {
+  background-color: var(--active);
+  color: white/* border-left: green 3px solid; */
+}
 
-  .CurrentNotebook{
-    float: left;
-    padding: 10px;
-    width: 300px;
-  }
+/* Style the accordion panel. Note: hidden by default */
 
-.notes{
+.panel {
+  display: none;
+  margin-bottom: 0px;
+}
+
+.panel p {
+  padding: 5px 23px;
+  vertical-align: middle;
+  margin: 0px;
+}
+
+.open {
+  transform: rotate(90deg);
+  transition: transform .1s linear;
+}
+
+.hidden {
+  display: none
+}
+
+.CurrentNotebook {
+  float: left;
+  padding: 10px;
+  width: 100%;
+}
+
+.notes {
   float: none;
   width: 200px;
   color: black;
   margin-top: 10px;
 }
 
-.notes p{
+.notes p {
   margin: 0px;
-
 }
 
 .CurrentNotebookName {
-  color: dodgerblue;
-  padding:5px;
-
+  color: black;
+  padding: 5px;
 }
 
-th{
+th {
   font-weight: normal;
 }
 
-
 .activeNotebook {
-  background-color: rgb(247, 68, 68);
-  color:white
+  background-color: var(--active);
+  color: black;
+  /* color: black */
+}
+
+.notebook:hover {
+  background-color: var(--active);
+  color: black;
   /* color: black */
 }
 
 .activeNote {
-  background-color: rgb(247, 68, 68);
-  color:white
-
+  background-color: var(--active);
+  color: black
   /* color: black */
 }
 
 .active {
- color: black;
+  color: var(--text-color);
 }
 
 .ql-toolbar.ql-snow {
@@ -290,8 +290,100 @@ th{
   padding-bottom: 0px;
 }
 
-#notesEditor{
+#notesEditor {
   padding-top: 5px
 }
 
+.ql-container.ql-snow {
+  border: none !important;
+}
 
+
+.menu-container {
+  width: 200px;
+  float: left;
+  height: 100vh;
+}
+
+.side-menu-medium {
+  width: 250px;
+  float: left;
+  height: 100vh;
+  margin-left: 200px;
+}
+
+.tab-container {
+  width: 100%;
+}
+
+.tab {
+  width: 100px;
+  background-color: #eeee;
+}
+
+.tab-name {
+  color: black
+}
+
+.tab-close {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.choose-editor {
+  height: 100vh;
+  width: 100vw;
+  background: rgb(32, 32, 32)
+}
+
+.clean-label {
+  text-align: center;
+  color: white;
+  padding-top: 1%
+}
+
+.full-width-container {
+  justify-content: center;
+  /* align horizontal */
+  width: 100%;
+  height: 500px;
+  display: flex;
+}
+
+.full-width-container span {
+  background-color: rgba(235, 235, 235, 0.933);
+  color: black;
+  width: 300px;
+  height: 300px;
+  float: left;
+  margin: 100px 50px;
+  border-radius: 9px;
+  text-align: center;
+  padding-top: 260px;
+}
+
+.option-container-large:hover {
+  transform: scale(1.05);
+}
+
+#editor {
+  display: none;
+}
+
+.choose-editor {
+  display: none;
+}
+
+#calendar {
+  padding-right: 5px;
+  float: left;  
+}
+
+/* .fc-body {
+  overflow-y: scroll;
+} */
+
+.fc-today {
+  background: rgb(236, 236, 236) !important;
+} 

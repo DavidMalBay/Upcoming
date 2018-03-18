@@ -8,10 +8,17 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.css"></link>
   <link rel="stylesheet" href="node_modules\@fortawesome\fontawesome\styles.css"></link>
+
+
+  <link rel="stylesheet" href="node_modules\fullcalendar\dist\fullcalendar.css"></link>
+
   <script defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <script type="text/javascript" src="node_modules\jquery\dist\jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
-  <link rel="stylesheet" type="text/css" href="node_modules\codemirror\lib\codemirror.css">
+  <script type="text/javascript" src="node_modules\moment\moment.js"></script>
+
+
+  <script src="node_modules\fullcalendar\dist\fullcalendar.js"></script>
 
 </head>
 
@@ -57,200 +64,169 @@
     </div>
   </div>
 
+  <div class="choose-editor">
+    <h3 class="clean-label">
+      Choose an editor
+      <i class="far fa-times-circle right"></i>
+    </h3>
+    <div class="full-width-container">
+      <span class="option-container-large quill-select">
+        Quil
+      </span>
+      <span class="option-container-large monaco-select">
+        Monaco
+      </span>
+    </div>
+  </div>
+
   <!-- <div id="top-menu">
     Upcoming
   </div> -->
 
-  <div class="Content">
-    <div id="side-menu" class="focusMode">
-      <!-- <button class="accordion">
-        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
-
-        Projects
-      </button> -->
-      <!-- <div class="panel">
-
-        <p>
-          Dtap Portal</p>
-      </div> -->
-      <!-- <hr> -->
-
-      <button class="accordion">
-        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
-        NOTEBOOKS
-      </button>
-      <div class="panel Notebooks">
-      </div>
-      <hr>
-
-      <button class="non-open-accordion">
-        <i class="far fa-check-square"></i>
-        TODO'S
-      </button>
-      <div class="panel Notebooks">
-      </div>
-      <hr>
-
-
-      <button class="non-open-accordion">
-        <i class="far fa-trash-alt"></i>        
+  <div id="side-menu" class="focusMode">
+    <button class="accordion">
+      <i class="fa fa-angle-right icon" aria-hidden="true"></i>
+      NOTEBOOKS
+    </button>
+    <div class="panel Notebooks">
+    </div>
+    <hr>
+    <button class="non-open-accordion" id="calendar-btn">
+      <i class="far fa-calendar"></i>
+      CALENDAR
+    </button>
+    <div class="panel Notebooks">
+    </div>
+    <hr>
+    <button class="non-open-accordion">
+      <i class="fas fa-columns"></i>
+      KANBANS
+    </button>
+    <div class="panel">
+      <p>Daily</p>
+      <p>Weekly</p>
+      <p>Monthy</p>
+    </div>
+    <hr>
+    <button class="non-open-accordion">
+      <i class="far fa-check-square"></i>
+      TODO'S
+    </button>
+    <div class="panel Notebooks">
+    </div>
+    <hr>
+    <button class="non-open-accordion">
+      <i class="far fa-trash-alt"></i>
+      TRASH
+    </button>
+    <div class="panel Notebooks">
+    </div>
+    <hr>
+    <button class="non-open-accordion">
+        <i class="far fa-trash-alt"></i>
         TRASH
       </button>
       <div class="panel Notebooks">
       </div>
       <hr>
-
-    <!-- <button class="accordion">
-        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
-        Habbit Tracker
-      </button>
-      <div class="panel">
-        <p>Daily</p>
-        <p>Weekly</p>
-        <p>Monthy</p>
-      </div>  
-      <hr> -->
-      <!-- <
-      <button class="accordion">
-        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
-        Todo List
-      </button>
-      <div class="panel">
-        <p>
-          Today
-        </p>
-        <p>
-          Tomorrow
-        </p>
-        <p>
-          Next 7 days</p>
-      </div>
-      <hr> -->
-
-      <!-- <button class="accordion">
-        <i class="fa fa-angle-right icon" aria-hidden="true"></i>
-        Goals
-      </button>
-      <div class="panel">
-        <p>Short term</p>
-        <p>Soon</p>
-        <p>Long term</p>
-      </div> -->
+  </div>
+  <div class="side-menu-medium hidden">
+    <div class="CurrentNotebook" id="sub-menu">
+      <h6 class="CurrentNotebookName"></h6>
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th class="text-right">Updated</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
     </div>
+  </div>
+  </div>
 
-    <div class="Content">
-      <div class="CurrentNotebook" id="sub-menu">
-        <h6 class="CurrentNotebookName"></h6>
-        <table class="table table-hover table-sm">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th class="text-right">Updated</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
 
+  
+
+  <div class="ChangeDiv">
+    <div class="ContainerForEditor">
+      <input placeholder="Note Title" class="TextEditorTitle"></input>
+      <div id="editor hidden"></div>
+      <div id="notesEditor"></div>
     </div>
-
-    <div class="ChangeDiv">
-
-     
-      <!-- <i class="left far fa-trash-alt" data-toggle="modal" data-target="#exampleModal"></i> -->
-
-      <div class="ContainerForEditor">
-        <input placeholder="Note Title" class="TextEditorTitle"></input>
-        <!-- <div id="editor"></div> -->
-
-        <div id="notesEditor"></div>
+    <div id='calendar' class="hidden">
       </div>
-
-    </div>
-
-    <!-- <div class="StatusBar"> -->
-
-      <!-- <select id="selectTheme" class="btn btn-sm">
-        <option value="1" selected>vs-dark</option>
-        <option value="2">vs</option>
-        <option value="3">hc-black</option>
-      </select> -->
-
-      <!-- <select id="selectMode" class="btn btn-sm">
-        <option value="0" selected>text/html</option>
-        <option value="1">python</option>
-        <option value="2">r</option>
-        <option value="3">julia</option>
-        <option value="4">sql</option>
-        <option value="5">markdown</option>
-        <option value="6">css</option>
-      </select> -->
-      <!-- Button trigger modal -->
+  </div>
 
 
-      <!-- Modal -->
 
 
-      <!-- </div>
-  </div> -->
+  <!-- 
+  <div class= "tab-container">
+    <div class="tab">
+      <span class="tab-name">File Name</span>
+      <button class="tab-close">x</button>
+    </div> -->
+
+  <!-- </div> -->
+  <!-- 
+  -->
+
+  <script>
+    // You can also require other files to run in this process
+    require('./menu/contextmenu')
+    require('./renderer.js')
+
+    function bold() {
+      console.log("bold")
+      document.execCommand('bold', false, null)
+    }
+  </script>
+
+  <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+    crossorigin="anonymous"></script>
+
+  <script>
+    require.config({
+      paths: {
+        'vs': './node_modules/monaco-editor/min/vs'
+      }
+    });
+    require(['vs/editor/editor.main'], function () {
+      var editor = monaco.editor.create(document.getElementById('editor'), {
+        language: 'text/html',
+        minimap: {
+          enabled: false
+        },
+        theme: "vs-dark",
+      });
 
 
-      <script>
-        // You can also require other files to run in this process
-        require('./menu/contextmenu')
-        require('./renderer.js')
-
-        function bold(){
-          console.log("bold")
-          document.execCommand('bold', false, null)
-        }
-        
-      </script>
-
-      <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-        crossorigin="anonymous"></script>
-
-      <script>
-        require.config({
-          paths: {
-            'vs': './node_modules/monaco-editor/min/vs'
-          }
+      window.addEventListener("resize", function resizeEditor() {
+        editor.layout();
+      });
+      $(document).ready(function () {
+        $('#selectMode').on("change", function () {
+          var mode = this.options[this.selectedIndex].innerHTML;
+          monaco.editor.setModelLanguage(editor.getModel(), mode)
         });
-        require(['vs/editor/editor.main'], function () {
-          var editor = monaco.editor.create(document.getElementById('editor'), {
-            language: 'text/html',
-            minimap: {
-              enabled: false
-            },
-            theme: "vs-dark",
-          });
+      });
 
-
-          window.addEventListener("resize", function resizeEditor() {
-            editor.layout();
-          });
-          $(document).ready(function () {
-            $('#selectMode').on("change", function () {
-              var mode = this.options[this.selectedIndex].innerHTML;
-              monaco.editor.setModelLanguage(editor.getModel(), mode)
-            });
-          });
-
-          $(document).ready(function () {
-            $('#selectTheme').on("change", function () {
-              var themeColor = this.options[this.selectedIndex].innerHTML;
-              monaco.editor.setTheme(String(themeColor))
-            });
-          });
+      $(document).ready(function () {
+        $('#selectTheme').on("change", function () {
+          var themeColor = this.options[this.selectedIndex].innerHTML;
+          monaco.editor.setTheme(String(themeColor))
         });
-      </script>
+      });
+    });
+  </script>
 
 </body>
 
 </html>
-

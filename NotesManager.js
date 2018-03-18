@@ -144,6 +144,7 @@ module.exports = {
       $(".TextEditorTitle").focus();
       $('.TextEditorTitle').attr("placeholder", "Please enter a tilte");
     } else {
+      
       newTitle = emoji.emojify($(".TextEditorTitle").val())
       newSaveData = emoji.emojify(monaco.editor.getModels()[0].getValue())
       fs.writeFile(__dirname + "/Files/Notebooks/" + (currentNotebook) + "/" + newTitle, newSaveData, function (err) {
@@ -158,6 +159,8 @@ module.exports = {
 
 
       });
+
+      
 
     }
   },
