@@ -125,6 +125,9 @@ for (var i = 0; i < acc.length; i++) {
       $(".side-menu").css({
         "height": "0px"
       })
+      $("#calendar").hide()
+      $(".ContainerForEditor").show()
+
      
 
     }
@@ -297,7 +300,7 @@ $(document).ready(function () {
 
 //function to calculate window height
 function get_calendar_height() {
-  return $(window).height() - 30;
+  return $(window).height();
 }
 
 //attacht resize event to window and set fullcalendar height property
@@ -318,7 +321,7 @@ $("#calendar-btn").on("click", function () {
   if ($(this).hasClass("active")) {
     $(".ContainerForEditor").hide()
     $("#calendar").show();
-    $("#calendar").fullCalendar('render')
+        $("#calendar").fullCalendar('render')
 
 
 
