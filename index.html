@@ -79,10 +79,6 @@
     </div>
   </div>
 
-  <!-- <div id="top-menu">
-    Upcoming
-  </div> -->
-
   <div id="side-menu" class="focusMode">
     <button class="accordion">
       <i class="fa fa-angle-right icon" aria-hidden="true"></i>
@@ -98,7 +94,7 @@
     <div class="panel Notebooks">
     </div>
     <hr>
-    <button class="non-open-accordion">
+    <button class="non-open-accordion" id="kanban-btn">
       <i class="fas fa-columns"></i>
       KANBANS
     </button>
@@ -108,7 +104,7 @@
       <p>Monthy</p>
     </div>
     <hr>
-    <button class="non-open-accordion">
+    <button class="non-open-accordion" id="todos-btn">
       <i class="far fa-check-square"></i>
       TODO'S
     </button>
@@ -122,13 +118,6 @@
     <div class="panel Notebooks">
     </div>
     <hr>
-    <button class="non-open-accordion">
-        <i class="far fa-trash-alt"></i>
-        TRASH
-      </button>
-      <div class="panel Notebooks">
-      </div>
-      <hr>
   </div>
   <div class="side-menu-medium hidden">
     <div class="CurrentNotebook" id="sub-menu">
@@ -148,41 +137,24 @@
   </div>
 
 
-  
+
 
   <div class="ChangeDiv">
     <div class="ContainerForEditor">
-      <input placeholder="Note Title" class="TextEditorTitle"></input>
-      <div id="editor hidden"></div>
-      <div id="notesEditor"></div>
+      <input placeholder="Note Title" class="TextEditorTitle hidden"></input>
+      <div id="editor"></div>
+      <div id="notesEditor hidden"></div>
+      <div id="kanbanBoard" class="hidden"></div> 
+      <div id='todos' class="hidden"></div>
     </div>
-    <div id='calendar' class="hidden">
-      </div>
+    <div id='calendar' class="hidden"></div>
   </div>
 
-
-
-
-  <!-- 
-  <div class= "tab-container">
-    <div class="tab">
-      <span class="tab-name">File Name</span>
-      <button class="tab-close">x</button>
-    </div> -->
-
-  <!-- </div> -->
-  <!-- 
-  -->
-
-  <script>
+ <script>
     // You can also require other files to run in this process
     require('./menu/contextmenu')
     require('./renderer.js')
-
-    function bold() {
-      console.log("bold")
-      document.execCommand('bold', false, null)
-    }
+    var todosManager = require("./todosManager")
   </script>
 
   <script src="./node_modules/monaco-editor/min/vs/loader.js"></script>

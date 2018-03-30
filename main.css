@@ -1,6 +1,6 @@
 :root {
-  --main-bg-color: rgb(252, 252, 252);
-  --navigation-menu-bg-color : rgb(252, 252, 252);
+  --main-bg-color:#e9eaed;
+  --navigation-menu-bg-color: #e9eaed;
   --text-color: black;
   --active: rgb(233, 233, 233);
 }
@@ -23,7 +23,6 @@ body {
   padding-left: 10px;
   font-size: 19px;
   background-color: tomato
-
 }
 
 button:focus {
@@ -36,14 +35,14 @@ button:focus {
 }
 
 button {
-  background-color: var(--navigation-menu-bg-color );
+  background-color: var(--navigation-menu-bg-color);
 }
 
 #side-menu {
   width: 200px;
   float: left;
   height: 0px;
-  background-color: var(--navigation-menu-bg-color );
+  background-color: var(--navigation-menu-bg-color);
 }
 
 #sub-menu {
@@ -133,7 +132,7 @@ h6 {
   /* padding-left: 10px; */
   padding: 5px;
   border-right: 1px solid rgb(218, 218, 218);
-  height: 100vh;
+  height: calc(100vh - 24px);
 }
 
 #menu ul {
@@ -199,7 +198,7 @@ h6 {
 }
 
 textarea.form-control {
-  height: 100vh;
+  height: 50px;
 }
 
 .ContainerForEditor {
@@ -298,7 +297,6 @@ th {
   border: none !important;
 }
 
-
 .menu-container {
   width: 200px;
   float: left;
@@ -367,16 +365,13 @@ th {
   transform: scale(1.05);
 }
 
-#editor {
-  display: none;
-}
 
 .choose-editor {
   display: none;
 }
 
 #calendar {
-  float: left;  
+  float: left;
 }
 
 /* .fc-body {
@@ -385,4 +380,94 @@ th {
 
 .fc-today {
   background: rgb(236, 236, 236) !important;
-} 
+}
+
+#kanbanBoard {
+  /* background-color: rgb(101, 185, 253); */
+  width: 100%;
+  height: 100%;
+}
+
+
+.hide-note {
+  color: red;
+  text-decoration: line-through;
+  display: none;
+}
+
+.delete-todo {
+  width: 0px;
+}
+
+.todos-view {
+  /* margin: 0px auto; */
+  padding: 5px;
+  width: 50%;
+  border-radius: 5px;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+#add-todo {
+  width: 100%;
+  margin-top: 10px
+}
+
+.todo-list {
+  padding-top: 12px;
+}
+.todo-list>li {
+  padding-left: 10px;
+}
+
+.todo-list>li>svg {
+  float: right;
+}
+
+.todo-list>li>svg:hover {
+  float: right;
+  cursor: pointer;
+}
+
+.fa-clone {
+  float: right;
+}
+
+.fa-clone:hover {
+  cursor: pointer;
+}
+
+.fa-star{
+  color: #FB7D44;
+  display: none
+}
+
+.fa-star:hover{
+  color: #FB7D44;
+  display: block;
+}
+
+
+html {
+  font: 14px 'Open Sans', sans-serif;
+}
+
+.form-control,
+.form-control:focus,
+.form-control:active,
+.form-control:active:focus {
+  border: none;
+  outline: none;
+  height: 25px;
+}
+.form-control {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.form-control:focus {
+  -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+

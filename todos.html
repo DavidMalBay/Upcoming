@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+
+
+<div class="todos-view">
+    <div>
+        Todo's
+        <span id="mark-all-as-complete">
+            <i class="far fa-clone"></i>
+        </span>
+    </div>
+
+
+    <input type="text" class="form-control" id="add-todo" placeholder="Add item..."/>
+
+    <ul class="todo-list">
+    </ul>
+
+</div>
+
+
+
+<script>
+        
+
+
+todosManager.populateIncompleteItems();
+
+    $("#add-todo").bind('keypress', function (e) {
+        if (e.keyCode == 13 && $("#add-todo").val() != "") {
+            var todoText = $("#add-todo").val()
+            $("#add-todo").val("")
+            todosManager.addItem(todoText)
+            
+        }
+        
+    })
+    // $(".delete-todo").each().on("click", function () {
+    //             console.log($(this).parent().text())
+    //             console.log("yoooooo")
+    //             // todosManager.markItemAsComplete($(this).text())
+    //             // $(this).hide()
+    //         });
+
+    $("#mark-all-as-complete").click(function () {
+        console.log("all items marked as complete")
+        todosManager.markAllAsComplete();
+        $(".todo-item").each(function () {
+            $(this).hide()
+        })
+    })
+    
+</script>
+
+</html>
